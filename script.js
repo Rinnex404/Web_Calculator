@@ -18,3 +18,5 @@ function getDivide(num1, num2){
     return result;
 }
 
+let firstnum, calculation, secnum, total;
+

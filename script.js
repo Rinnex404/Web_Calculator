@@ -20,3 +20,23 @@ function getDivide(num1, num2){
 
 let firstnum, calculation, secnum, total;
 
+function operator(fnum, calc, snum){
+    switch(calc){
+        case "+":
+            total = getAdd(fnum, snum);
+        break;
+
+        case "-":
+            total = getSubtract(fnum, snum);
+        break;
+
+        case "*":
+            total = getMultiply(fnum, snum);
+        break;
+
+        case "/":
+            total = getDivide(fnum, snum);
+        break;
+    }
+    return total;
+}

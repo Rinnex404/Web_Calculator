@@ -41,6 +41,15 @@ function operator(fnum, calc, snum){
     return total;
 }
 
-function display(){
+const btn = document.querySelectorAll(".calcbutton");
+btn.forEach((btn) => {
+    btn.addEventListener("click", ()=>{
+    let num = btn.value;
+    display(num);
+});
+});
+
+function display(num){
     let numDis = document.querySelector(".display");
+    numDis.value = num;
 }

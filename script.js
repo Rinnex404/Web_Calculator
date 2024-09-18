@@ -40,3 +40,7 @@ function operator(fnum, calc, snum){
     }
     return total;
 }
+
+function display(){
+    let numDis = document.querySelector(".display");
+}

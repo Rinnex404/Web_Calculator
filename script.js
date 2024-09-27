@@ -53,6 +53,7 @@ const btn = document.querySelectorAll(".calcbutton");   //button for (1-9)
 const calc_buttons = document.querySelectorAll(".operator"); //button for (/*-+)
 const submit_button = document.querySelector("#submit"); //button for (=)
 let numDis = document.querySelector(".display"); //input display
+const clear_button = document.querySelector(".clear");
 
 btn.forEach((btns) => {
     btns.addEventListener("click", ()=>{
@@ -107,5 +108,8 @@ submit_button.addEventListener("click", ()=>{
     }
 });
 
-
+clear_button.addEventListener("click", ()=>{        //reset all calculation
+    numDis.value = "";
+    firstnum = secnum = calculation = null;         
+});
 

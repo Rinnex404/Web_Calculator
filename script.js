@@ -58,6 +58,7 @@ const undo_button = document.querySelector(".undo");
 
 btn.forEach((btns) => {
     btns.addEventListener("click", ()=>{
+        
         if(ifNumIsPressed === false){
             numDis.value = "";              //reset display number if second number is entered
         }
@@ -76,7 +77,11 @@ function display(num){
         ifSubmitIsPressed = false;
     }
 
-    numDis.value += num;
+    if(numDis.value === "0"){
+        numDis.value = num;
+    }else{
+        numDis.value += num;
+    }
 }
 
 
@@ -114,7 +119,7 @@ clear_button.addEventListener("click", ()=>{        //reset all calculation
     firstnum = secnum = calculation = null;         
 });
 
-undo_button.addEventListener("click", ()=>{
+undo_button.addEventListener("click", ()=>{     //delete previous number
     numDis.value = (numDis.value).slice(0,-1);
 });
 

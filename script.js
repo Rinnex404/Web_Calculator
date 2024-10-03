@@ -49,12 +49,13 @@ function showResult(){
     numDis.value = result;
 }
 
-const btn = document.querySelectorAll(".calcbutton");   //button for (1-9)
+const btn = document.querySelectorAll(".calcbutton:nth-child(-n+13)");   //button for (1-9, 0 and 00)
 const calc_buttons = document.querySelectorAll(".operator"); //button for (/*-+)
 const submit_button = document.querySelector("#submit"); //button for (=)
 let numDis = document.querySelector(".display"); //input display
 const clear_button = document.querySelector(".clear"); //clear button
-const undo_button = document.querySelector(".undo");
+const undo_button = document.querySelector(".undo"); //button for delete previous value
+const decimal_button = document.querySelector(".calcbutton:last-child");//button for decimal value
 
 btn.forEach((btns) => {
     btns.addEventListener("click", ()=>{
@@ -77,11 +78,14 @@ function display(num){
         ifSubmitIsPressed = false;
     }
 
-    if(numDis.value === "0"){
-        numDis.value = num;
-    }else{
-        numDis.value += num;
+    if(num === "00" && numDis.value === "0") {
+        numDis.value = "0"; // Prevent multiple 0, keep it as 0
+    } else if (numDis.value === "0") {
+        numDis.value = num; // Replace 0 if a different number is pressed
+    } else {
+        numDis.value += num; // Append the number to the display value
     }
+    
 }
 
 
@@ -115,11 +119,19 @@ submit_button.addEventListener("click", ()=>{
 });
 
 clear_button.addEventListener("click", ()=>{        //reset all calculation
-    numDis.value = "";
+    numDis.value = "0";
     firstnum = secnum = calculation = null;         
 });
 
 undo_button.addEventListener("click", ()=>{     //delete previous number
     numDis.value = (numDis.value).slice(0,-1);
+});
+
+decimal_button.addEventListener("click", ()=>{  //add decimal to display
+    if(numDis.value === "0"){                   //if user press decimal first, add "0." instead of single "." to display
+        display("0.");
+    }else if(!numDis.value.includes(".")){      //prevent multiple decimal on display
+        display(".");
+    }
 });
 

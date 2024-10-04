@@ -141,3 +141,33 @@ percent_button.addEventListener("click",()=>{           //percent button to divi
         numDis.value = Number(numDis.value) / 100; 
     }
 });
+
+document.addEventListener("keydown", function(event){   //simulate keyboard input
+    btn.forEach((btns)=>{                   // simulate calculator button (0-9) click when corresponding keyboard key (0-9) is pressed
+        if(event.key === btns.value){
+            btns.click();
+        }
+    });
+
+    calc_buttons.forEach((calc_button)=>{   // simulate button (/*-+)
+        if(event.key === calc_button.value){
+            calc_button.click();
+        }
+    });
+
+    if(event.key === submit_button.value){  //simulate button (=)
+        submit_button.click();
+    }
+
+    if(event.key === decimal_button.value){ //simulate button (.)
+        decimal_button.click();
+    }
+
+    if(event.key === "%"){          //simulate button (%)
+        percent_button.click();
+    }
+
+    if(event.key === "Backspace"){      //simulate button (backspace)
+        undo_button.click();
+    }
+}); 

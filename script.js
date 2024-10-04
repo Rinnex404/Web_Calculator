@@ -56,6 +56,7 @@ let numDis = document.querySelector(".display"); //input display
 const clear_button = document.querySelector(".clear"); //clear button
 const undo_button = document.querySelector(".undo"); //button for delete previous value
 const decimal_button = document.querySelector(".calcbutton:last-child");//button for decimal value
+const percent_button = document.querySelector(".percent");//percentage button
 
 btn.forEach((btns) => {
     btns.addEventListener("click", ()=>{
@@ -135,3 +136,8 @@ decimal_button.addEventListener("click", ()=>{  //add decimal to display
     }
 });
 
+percent_button.addEventListener("click",()=>{           //percent button to divide number by 100
+    if(numDis.value!="0"){                      
+        numDis.value = Number(numDis.value) / 100; 
+    }
+});

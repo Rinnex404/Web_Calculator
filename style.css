@@ -30,10 +30,20 @@ body{
 }
 
 .row input{
-    flex: 1 1 80%;
-    text-align: right;
     background-color:snow;
     border: 0;
+}
+
+.row input:first-child{
+    text-align: left;
+    width: 80px;
+    opacity: 0.5;
+}
+
+.row input:nth-child(2){
+    text-align: right;
+    margin-left: 2px;
+    width: 180px;
 }
 
 .row input:focus{

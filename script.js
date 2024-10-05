@@ -47,6 +47,7 @@ function showResult(){
     ifNumIsPressed = false;
     ifSubmitIsPressed = true;
     numDis.value = result;
+    log_display.value = firstnum + "" + calculation + "" + secnum + "=";
 }
 
 const btn = document.querySelectorAll(".calcbutton:nth-child(-n+13)");   //button for (1-9, 0 and 00)
@@ -57,6 +58,7 @@ const clear_button = document.querySelector(".clear"); //clear button
 const undo_button = document.querySelector(".undo"); //button for delete previous value
 const decimal_button = document.querySelector(".calcbutton:last-child");//button for decimal value
 const percent_button = document.querySelector(".percent");//percentage button
+let log_display = document.querySelector(".logdisplay");    //display to show previous calculation
 
 btn.forEach((btns) => {
     btns.addEventListener("click", ()=>{
@@ -121,7 +123,8 @@ submit_button.addEventListener("click", ()=>{
 
 clear_button.addEventListener("click", ()=>{        //reset all calculation
     numDis.value = "0";
-    firstnum = secnum = calculation = null;         
+    firstnum = secnum = calculation = null;
+    log_display.value = null;        
 });
 
 undo_button.addEventListener("click", ()=>{     //delete previous number
